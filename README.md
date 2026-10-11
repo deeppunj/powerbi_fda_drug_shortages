@@ -36,8 +36,16 @@ Avg Days Open    = ROUND(AVERAGEX(CALCULATETABLE(VALUES(Shortages[shortage_id]),
 
 ## How to open
 1. Install the free [Power BI Desktop](https://www.microsoft.com/power-bi/desktop) (Windows).
-2. Clone this repository.
-3. Open `report/fda-shortages.pbip`.
+2. Clone or download this repository (**Code → Download ZIP**, then unzip).
+3. Open `report/fda-shortages.pbip` in Power BI Desktop.
+4. Point the report to the data on your computer:
+   - Go to **Home → Transform data → Edit parameters**.
+   - Set `DataFolder` to the full path of this repository's `data` folder, ending with `\`.
+     Example: `C:\Users\YourName\Downloads\powerbi_fda_drug_shortages\data\`
+   - Click **OK**, then **Apply changes**.
+
+The data file `data/fda_drug_shortages.csv` is included in this repository.
+To get the newest data, download it from [openFDA Drug Shortages](https://open.fda.gov/apis/drug/drugshortages/).
 
 ## Next steps
 - Add a date table and star-schema data model
