@@ -25,6 +25,7 @@
 - DAX measures: `CALCULATE`, `DISTINCTCOUNT`, `AVERAGEX`, `DATEDIFF`
 - Top N filtering and report design
 - Power BI Project format (.pbip) for version control
+- Power Query parameters for a portable data source
 
 ## DAX measures
 ```dax
