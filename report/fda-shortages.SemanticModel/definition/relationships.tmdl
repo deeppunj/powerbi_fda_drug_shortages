@@ -1,0 +1,10 @@
+relationship 6aab6a22-1785-40de-bb97-4b6bc82df264
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Shortages.initial_posting_date
+	toColumn: LocalDateTable_0a13fe4c-0f8b-48d8-856d-cf33164eaa99.Date
+
+relationship 706c5915-a9e4-439c-bcb6-b45308b6981d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Shortages.update_date
+	toColumn: LocalDateTable_bc8555b6-1699-4b46-a94f-ad585affd4f8.Date
+

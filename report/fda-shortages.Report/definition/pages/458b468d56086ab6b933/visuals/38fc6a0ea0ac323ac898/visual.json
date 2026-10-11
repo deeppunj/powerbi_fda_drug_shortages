@@ -1,0 +1,81 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "38fc6a0ea0ac323ac898",
+  "position": {
+    "x": 512.41347838398087,
+    "y": 70.357476184811844,
+    "z": 3000,
+    "height": 79,
+    "width": 245,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Shortages"
+                    }
+                  },
+                  "Property": "Avg Days Open"
+                }
+              },
+              "queryRef": "Shortages.Avg Days Open",
+              "nativeQueryRef": "Avg Days Open"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Shortages"
+                  }
+                },
+                "Property": "Avg Days Open"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Shortages.Avg Days Open"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

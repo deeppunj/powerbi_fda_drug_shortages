@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "4fdfa67d4e1b4e7ba932",
+  "position": {
+    "x": 8.4134783839808822,
+    "y": 70.357476184811844,
+    "z": 0,
+    "height": 82,
+    "width": 244,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Shortages"
+                    }
+                  },
+                  "Property": "Active Shortages"
+                }
+              },
+              "queryRef": "Shortages.Active Shortages",
+              "nativeQueryRef": "Active Shortages"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Shortages"
+                  }
+                },
+                "Property": "Active Shortages"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Shortages.Active Shortages"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

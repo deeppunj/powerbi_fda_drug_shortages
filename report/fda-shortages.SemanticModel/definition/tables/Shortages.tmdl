@@ -1,0 +1,132 @@
+table Shortages
+	lineageTag: 576934c1-d41c-4327-b2c8-f8d55435e7ee
+
+	measure 'Active Shortages' = ```
+			CALCULATE(DISTINCTCOUNT(Shortages[shortage_id]), Shortages[status] = "Current")
+			
+			```
+		formatString: 0
+		lineageTag: 46200b28-07f6-4a6d-80c7-764bc0b15820
+
+	measure 'Drugs Affected' = ```
+			CALCULATE(DISTINCTCOUNT(Shortages[generic_name]), Shortages[status] = "Current")
+			
+			```
+		formatString: 0
+		lineageTag: 653f64e1-9a78-41fc-bf60-9972cd370bc9
+
+	measure 'Avg Days Open' = ```
+			ROUND(AVERAGEX(CALCULATETABLE(VALUES(Shortages[shortage_id]), Shortages[status] = "Current"), CALCULATE(DATEDIFF(MIN(Shortages[initial_posting_date]), TODAY(), DAY))), 0)
+			
+			```
+		lineageTag: a5ffe3d3-fb29-4585-ac38-6d92e0e15783
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column shortage_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b52bff7-1e67-4e1d-87a7-a7654d0bae59
+		summarizeBy: sum
+		sourceColumn: shortage_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column generic_name
+		dataType: string
+		lineageTag: 8715c111-70aa-4a4a-9877-4f6b5049a738
+		summarizeBy: none
+		sourceColumn: generic_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 3a3e91b8-8bd0-44fe-aebe-937cca20bff2
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column dosage_form
+		dataType: string
+		lineageTag: de5a0592-9176-42d7-a472-aabed0ab78a2
+		summarizeBy: none
+		sourceColumn: dosage_form
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: f843719f-9ae8-4153-9fe4-e48c58f30731
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column availability
+		dataType: string
+		lineageTag: fe42eb83-83fc-4d81-9ea0-c501ce7b585d
+		summarizeBy: none
+		sourceColumn: availability
+
+		annotation SummarizationSetBy = Automatic
+
+	column shortage_reason
+		dataType: string
+		lineageTag: 2ca5b1be-f410-42ea-bb6c-88cdfd5a0949
+		summarizeBy: none
+		sourceColumn: shortage_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column therapeutic_category
+		dataType: string
+		lineageTag: 3337572f-328e-47dc-82fb-a3ad6d7cb857
+		summarizeBy: none
+		sourceColumn: therapeutic_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column initial_posting_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8520a6b2-409a-42e1-8572-d4c8d8776ebb
+		summarizeBy: none
+		sourceColumn: initial_posting_date
+
+		variation Variation
+			isDefault
+			relationship: 6aab6a22-1785-40de-bb97-4b6bc82df264
+			defaultHierarchy: LocalDateTable_0a13fe4c-0f8b-48d8-856d-cf33164eaa99.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column update_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 06ffa037-031d-4cbb-96f5-c304c8a0e416
+		summarizeBy: none
+		sourceColumn: update_date
+
+		variation Variation
+			isDefault
+			relationship: 706c5915-a9e4-439c-bcb6-b45308b6981d
+			defaultHierarchy: LocalDateTable_bc8555b6-1699-4b46-a94f-ad585affd4f8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Shortages = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("\\Mac\Home\Library\CloudStorage\OneDrive-Personal\STUDY\DataSciecne\Job prep\PowerBI_projects\powerbi_fda_drug_shortages\data\fda_drug_shortages.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"shortage_id", Int64.Type}, {"generic_name", type text}, {"company_name", type text}, {"dosage_form", type text}, {"status", type text}, {"availability", type text}, {"shortage_reason", type text}, {"therapeutic_category", type text}, {"initial_posting_date", type date}, {"update_date", type date}})
+				in
+				  #"Changed column type"
+

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "5e9078dca074b764873e",
+  "position": {
+    "x": 259.41347838398076,
+    "y": 70.357476184811844,
+    "z": 2000,
+    "height": 82,
+    "width": 244,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Shortages"
+                    }
+                  },
+                  "Property": "Drugs Affected"
+                }
+              },
+              "queryRef": "Shortages.Drugs Affected",
+              "nativeQueryRef": "Drugs Affected"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Shortages"
+                  }
+                },
+                "Property": "Drugs Affected"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Shortages.Drugs Affected"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

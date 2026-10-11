@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "602b5cc67e1f25ff39bd",
+  "position": {
+    "x": 8.3947746112407522,
+    "y": 603.96172881545976,
+    "z": 4001,
+    "height": 475,
+    "width": 545,
+    "tabOrder": 4001
+  },
+  "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Shortages"
+                    }
+                  },
+                  "Property": "availability"
+                }
+              },
+              "queryRef": "Shortages.availability",
+              "nativeQueryRef": "availability",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Shortages"
+                    }
+                  },
+                  "Property": "Active Shortages"
+                }
+              },
+              "queryRef": "Shortages.Active Shortages",
+              "nativeQueryRef": "Active Shortages"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Shortages"
+                  }
+                },
+                "Property": "Active Shortages"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "' Availability of active shortages '"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
